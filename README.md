@@ -3,6 +3,8 @@
 ## 📌 Project Overview
 This project predicts whether a shipment/order will be **delayed or not delayed** using a Machine Learning model.
 
+Link: https://logisticsdelayprediction-mqzuldejym3lcqfaowtrea.streamlit.app/
+
 It uses:
 - Feature engineering (business-driven)
 - XGBoost model

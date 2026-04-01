@@ -240,7 +240,7 @@ if submitted or st.session_state.get('predict_clicked', False):
     
     try:
         pred = model.predict(input_data)[0]
-        prob = model.predict_proba(input_data)[0][1]
+        prob = model.predict_proba(input_data)[0][1] * 100  # Convert to percentage
         
         st.markdown("---")
         st.subheader("📊 Prediction Result")
@@ -253,15 +253,19 @@ if submitted or st.session_state.get('predict_clicked', False):
             st.error(f"### ⚠️ DELAYED")
             st.snow()
         
-        st.metric("Delay Probability", f"{prob:.1%}")
+        st.metric("Delay Probability", f"{prob:.1f}%")
         
-        # Risk level
-        if prob < 0.3:
-            st.info("🟢 **Low Risk** - Normal processing")
-        elif prob < 0.6:
-            st.warning("🟡 **Medium Risk** - Monitor closely")
+        # Risk level based on your specified ranges
+        if prob <= 20:
+            st.success("🟢 **Low Risk of Delay** - Normal processing")
+        elif prob <= 38:
+            st.info("🔵 **Medium Risk** - Monitor shipment")
+        elif prob <= 50:
+            st.warning("🟡 **High Risk** - Take action")
+        elif prob <= 80:
+            st.error("🔴 **Very High Risk** - Immediate action required")
         else:
-            st.error("🔴 **High Risk** - Take immediate action")
+            st.error("💀 **Critical Risk** - Urgent intervention needed")
             
     except Exception as e:
         st.error(f"Error: {e}")

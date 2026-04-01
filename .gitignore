@@ -1,0 +1,28 @@
+delay/
+__pycache__/
+*.pyc
+.ipynb_checkpoints
+.DS_Store
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environment
+loanvenv/
+venv/
+env/
+
+
+# Mac
+.DS_Store
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# Environment variables (if you add later)
+.env
+test_model.py
